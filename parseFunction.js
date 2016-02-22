@@ -33,6 +33,7 @@ sip:alice@atlanta.example.com|sip:bob@biloxi.example.org|
    sip:alice@pc33.atlanta.example.com*/
 var digestString = m["headers"]["from"]["uri"] + "|" + addrSpecContact + "|" + m["headers"]["call-id"] + "|" + m["headers"]["cseq"]["seq"] + ' ' + m["headers"]["cseq"]["method"] + "|" + m["headers"]["date"] + "|" + addrSpecContact;
 
+//referenced FROM: https://github.com/kjur/jsrsasign/wiki/Tutorial-for-Signature-class
 //initialize
 var sig = new KJUR.crypto.Signature({"alg": "SHA1withRSA", "prov": "cryptojs/jsrsa"});
 //initialize for signature generation
