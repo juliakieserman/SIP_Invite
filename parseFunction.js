@@ -1,7 +1,10 @@
 var sip = require('sip');
 var JsSIP = require('jssip');
-var CryptoJS = require("crypto-js");
+var CryptoJS = require('crypto-js');
+var crypto = require('crypto');
+var fs = require('fs');
 var r = require('jsrsasign');
+var _sip = require('sipcore');
 
 
 var privateKey = "-----BEGIN RSA PRIVATE KEY-----\
@@ -23,7 +26,6 @@ var privateKey = "-----BEGIN RSA PRIVATE KEY-----\
 
 //make sure SIP library will put it back in teh right order when reconstructing the string 
 //insert new stuff in JSON obj
-
 var m = sip.parse(['INVITE sip:bob@biloxi.com SIP/2.0', 'Via: SIP/2.0/TLS pc33.atlanta.example.com;branch=z9hG4bKnashds8', 'To: Bob <sip:bob@bioloxi.example.org>', 'From: Alice <sip:alice@atlanta.example.com>;tag=1928301774', 'Call-ID: a84b4c76e66710', 'CSeq: 314159 INVITE', 'Max-Fowards: 70', 'Date: Thu, 21 Feb 2002 12:02:03 GMT', 'Contact: <sip:alice@pc33.atlanta.example.com>', 'Content-Type: application/sdp', 'Content-Length: 147', '\r\n'].join('\r\n'));
 var addrSpecContact = m["headers"]["to"]["uri"];
 
@@ -33,15 +35,22 @@ sip:alice@atlanta.example.com|sip:bob@biloxi.example.org|
    sip:alice@pc33.atlanta.example.com*/
 var digestString = m["headers"]["from"]["uri"] + "|" + addrSpecContact + "|" + m["headers"]["call-id"] + "|" + m["headers"]["cseq"]["seq"] + ' ' + m["headers"]["cseq"]["method"] + "|" + m["headers"]["date"] + "|" + addrSpecContact;
 
+//does this line reconstruct the sip message?
+var value = sip.stringify(m);
+
+
 //referenced FROM: https://github.com/kjur/jsrsasign/wiki/Tutorial-for-Signature-class
 //initialize
-var sig = new KJUR.crypto.Signature({"alg": "SHA1withRSA", "prov": "cryptojs/jsrsa"});
+//ar sig = new KJUR.crypto.Signature({"alg": "SHA1withRSA", "prov": "cryptojs/jsrsa"});
 //initialize for signature generation
-sig.initSign(privateKey);
+//sip.initSign(privateKey);
 //update data
-sig.updateString(digestString);
+//sig.updateString(digestString);
 //calculate signature
-var sigValueHex = sig.sign();
+//var sigValueHex = sig.sign();
+
+
+console.log(value);
 
 //hash 
 //var hash = CryptoJS.SHA256(digestString);
