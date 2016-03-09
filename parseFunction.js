@@ -27,17 +27,40 @@ var claims = {"iat": date,
                "orig": to,
                "term": from};
 
-
 //merge two json objects
 var token = {"header":header, 
              "claims": claims};
+
+//privateKey
+var privateKey = "-----BEGIN RSA PRIVATE KEY-----\
+   MIICXQIBAAKBgQDPPMBtHVoPkXV+Z6jq1LsgfTELVWpy2BVUffJMPH06LL0cJSQO\
+   aIeVzIojzWtpauB7IylZKlAjB5f429tRuoUiedCwMLKblWAqZt6eHWpCNZJ7lONc\
+   IEwnmh2nAccKk83Lp/VH3tgAS/43DQoX2sndnYh+g8522Pzwg7EGWspzzwIDAQAB\
+   AoGBAK0W3tnEFD7AjVQAnJNXDtx59Aa1Vu2JEXe6oi+OrkFysJjbZJwsLmKtrgtt\
+   PXOU8t2mZpi0wK4hX4tZhntiwGKkUPC3h9Bjp+GerifP341RMyMO+6fPgjqOzUDw\
+   +rPjjMpwD7AkcEcqDgbTrZnWv/QnCSaaF3xkUGfFkLx5OKcRAkEA7UxnsE8XaT30\
+   tP/UUc51gNk2KGKgxQQTHopBcew9yfeCRFhvdL7jpaGatEi5iZwGGQQDVOVHUN1H\
+   0YLpHQjRowJBAN+R2bvA/Nimq464ZgnelEDPqaEAZWaD3kOfhS9+vL7oqES+u5E0\
+   J7kXb7ZkiSVUg9XU/8PxMKx/DAz0dUmOL+UCQH8C9ETUMI2uEbqHbBdVUGNk364C\
+   DFcndSxVh+34KqJdjiYSx6VPPv26X9m7S0OydTkSgs3/4ooPxo8HaMqXm80CQB+r\
+   xbB3UlpOohcBwFK9mTrlMB6Cs9ql66KgwnlL9ukEhHHYozGatdXeoBCyhUsogdSU\
+   6/aSAFcvWEGtj7/vyJECQQCCS1lKgEXoNQPqONalvYhyyMZRXFLdD4gbwRPK1uXK\
+   Ypk3CkfFzOyfjeLcGPxXzq2qzuHzGTDxZ9PAepwX4RSk\
+   -----END RSA PRIVATE KEY-----";
+
+//sign token (NOTE: currently signing with incorrect alg)
+var sig = new KJUR.crypto.Signature({"alg": "SHA1withRSA"});
+sig.init(privateKey);
+sig.updateString(token);
+
+//signature for identity header
+var signedIdentityDigest = sig.sign();
 
 
 
 //convert back to string
 var value = sip.stringify(m);
 
-console.log(token);
-//console.log(m);
+console.log(m);
 
 

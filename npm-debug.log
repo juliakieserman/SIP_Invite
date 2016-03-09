@@ -1,0 +1,99 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'JsonWebSignature' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.1
+4 verbose config Skipping project config: /Users/juliakieserman/.npmrc. (matches userconfig)
+5 verbose install initial load of /Users/juliakieserman/package.json
+6 verbose installManyTop reading scoped package data from /Users/juliakieserman/node_modules/crypto-js/package.json
+7 verbose installManyTop reading scoped package data from /Users/juliakieserman/node_modules/dygraphs/package.json
+8 verbose installManyTop reading scoped package data from /Users/juliakieserman/node_modules/jose/package.json
+9 verbose installManyTop reading scoped package data from /Users/juliakieserman/node_modules/jsrsasign/package.json
+10 verbose installManyTop reading scoped package data from /Users/juliakieserman/node_modules/jssip/package.json
+11 verbose installManyTop reading scoped package data from /Users/juliakieserman/node_modules/normalize.css/package.json
+12 verbose installManyTop reading scoped package data from /Users/juliakieserman/node_modules/sip/package.json
+13 verbose installManyTop reading scoped package data from /Users/juliakieserman/node_modules/sip.js/package.json
+14 verbose installManyTop reading scoped package data from /Users/juliakieserman/node_modules/sipcore/package.json
+15 info package.json jsrsasign@5.0.5 No license field.
+16 info package.json sip@0.0.3 No license field.
+17 info package.json sipcore@0.2.0 license should be a valid SPDX license expression
+18 verbose readDependencies loading dependencies from /Users/juliakieserman/package.json
+19 silly cache add args [ 'JsonWebSignature', null ]
+20 verbose cache add spec JsonWebSignature
+21 silly cache add parsed spec Result {
+21 silly cache add   raw: 'JsonWebSignature',
+21 silly cache add   scope: null,
+21 silly cache add   name: 'JsonWebSignature',
+21 silly cache add   rawSpec: '',
+21 silly cache add   spec: '*',
+21 silly cache add   type: 'range' }
+22 silly addNamed JsonWebSignature@*
+23 verbose addNamed "*" is a valid semver range for JsonWebSignature
+24 silly addNameRange { name: 'JsonWebSignature', range: '*', hasData: false }
+25 silly mapToRegistry name JsonWebSignature
+26 silly mapToRegistry using default registry
+27 silly mapToRegistry registry https://registry.npmjs.org/
+28 silly mapToRegistry uri https://registry.npmjs.org/JsonWebSignature
+29 verbose addNameRange registry:https://registry.npmjs.org/JsonWebSignature not in flight; fetching
+30 verbose request uri https://registry.npmjs.org/JsonWebSignature
+31 verbose request no auth needed
+32 info attempt registry request try #1 at 9:10:18 AM
+33 verbose request id abdc6c9ace6eb8d5
+34 http request GET https://registry.npmjs.org/JsonWebSignature
+35 http 404 https://registry.npmjs.org/JsonWebSignature
+36 verbose headers { 'content-type': 'application/json',
+36 verbose headers   'cache-control': 'max-age=0',
+36 verbose headers   'content-length': '2',
+36 verbose headers   'accept-ranges': 'bytes',
+36 verbose headers   date: 'Wed, 09 Mar 2016 14:10:19 GMT',
+36 verbose headers   via: '1.1 varnish',
+36 verbose headers   age: '0',
+36 verbose headers   connection: 'keep-alive',
+36 verbose headers   'x-served-by': 'cache-jfk1028-JFK',
+36 verbose headers   'x-cache': 'MISS',
+36 verbose headers   'x-cache-hits': '0',
+36 verbose headers   'x-timer': 'S1457532619.305229,VS0,VE21' }
+37 silly get cb [ 404,
+37 silly get   { 'content-type': 'application/json',
+37 silly get     'cache-control': 'max-age=0',
+37 silly get     'content-length': '2',
+37 silly get     'accept-ranges': 'bytes',
+37 silly get     date: 'Wed, 09 Mar 2016 14:10:19 GMT',
+37 silly get     via: '1.1 varnish',
+37 silly get     age: '0',
+37 silly get     connection: 'keep-alive',
+37 silly get     'x-served-by': 'cache-jfk1028-JFK',
+37 silly get     'x-cache': 'MISS',
+37 silly get     'x-cache-hits': '0',
+37 silly get     'x-timer': 'S1457532619.305229,VS0,VE21' } ]
+38 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/JsonWebSignature
+38 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+38 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:242:14)
+38 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+38 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:198:22)
+38 verbose stack     at emitTwo (events.js:87:13)
+38 verbose stack     at Request.emit (events.js:172:7)
+38 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1063:14)
+38 verbose stack     at emitOne (events.js:82:20)
+38 verbose stack     at Request.emit (events.js:169:7)
+38 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+39 verbose statusCode 404
+40 verbose pkgid JsonWebSignature
+41 verbose cwd /Users/juliakieserman/GitHub/SIP_Invite
+42 error Darwin 14.5.0
+43 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "JsonWebSignature"
+44 error node v4.2.1
+45 error npm  v2.14.7
+46 error code E404
+47 error 404 Registry returned 404 for GET on https://registry.npmjs.org/JsonWebSignature
+47 error 404
+47 error 404 'JsonWebSignature' is not in the npm registry.
+47 error 404 Your package name is not valid, because
+47 error 404
+47 error 404  1. name can no longer contain capital letters
+47 error 404
+47 error 404 Note that you can also install from a
+47 error 404 tarball, folder, http url, or git url.
+48 verbose exit [ 1, true ]
