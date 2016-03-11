@@ -49,6 +49,7 @@ var privateKey = "-----BEGIN RSA PRIVATE KEY-----\
    -----END RSA PRIVATE KEY-----";
 
 //sign token (NOTE: currently signing with incorrect alg)
+//referenced from: http://kjur.github.io/jsrsasign/api/symbols/KJUR.crypto.Signature.html
 var sig = new KJUR.crypto.Signature({"alg": "SHA1withRSA"});
 sig.init(privateKey);
 sig.updateString(token);
@@ -56,11 +57,11 @@ sig.updateString(token);
 //signature for identity header
 var signedIdentityDigest = sig.sign();
 
-
-
 //convert back to string
-var value = sip.stringify(m);
+var stringifiedSIP = sip.stringify(m);
 
-console.log(m);
+stringifiedSIP = stringifiedSIP + ['Identity: ' + signedIdentityDigest];
+
+console.log(stringifiedSIP);
 
 
