@@ -3,8 +3,8 @@ var JsSIP = require('jssip');
 var CryptoJS = require('crypto-js');
 var crypto = require('crypto');
 var fs = require('fs');
-var r = require('jsrsasign');
 var _sip = require('sipcore');
+var btoa = require('btoa');
 
 
 var m = sip.parse(['INVITE sip:bob@biloxi.com SIP/2.0', 'Via: SIP/2.0/TLS pc33.atlanta.example.com;branch=z9hG4bKnashds8', 'To: Bob <sip:+12155551213@biloxi.com; user=phone>', 'From: Alice <sip:+12155551212@atlanta.com; user=phone>;tag=1928301774', 'Call-ID: a84b4c76e66710', 'CSeq: 314159 INVITE', 'Max-Fowards: 70', 'Date: Thu, 21 Feb 2002 12:02:03 GMT', 'Contact: <sip:alice@pc33.atlanta.example.com>', 'Content-Type: application/sdp', 'Content-Length: 147', '\r\n'].join('\r\n'));
@@ -23,13 +23,9 @@ var to = m["headers"]["to"]["uri"].substring(5, 16);
 var from = m["headers"]["from"]["uri"].substring(5, 16);
 
 //token claim obj
-var claims = {"iat": date,
+var payload = {"iat": date,
                "orig": to,
                "term": from};
-
-//merge two json objects
-var token = {"header":header, 
-             "claims": claims};
 
 //privateKey
 var privateKey = "-----BEGIN RSA PRIVATE KEY-----\
@@ -48,20 +44,24 @@ var privateKey = "-----BEGIN RSA PRIVATE KEY-----\
    Ypk3CkfFzOyfjeLcGPxXzq2qzuHzGTDxZ9PAepwX4RSk\
    -----END RSA PRIVATE KEY-----";
 
-//sign token (NOTE: currently signing with incorrect alg)
-//referenced from: http://kjur.github.io/jsrsasign/api/symbols/KJUR.crypto.Signature.html
-var sig = new KJUR.crypto.Signature({"alg": "SHA1withRSA"});
-sig.init(privateKey);
-sig.updateString(token);
+//JWS reference: https://tools.ietf.org/html/rfc7515#appendix-C
 
-//signature for identity header
-var signedIdentityDigest = sig.sign();
+//base64 encode objects
+var encodedHeader = btoa(JSON.stringify(header));
+var encodedPayload = btoa(JSON.stringify(payload));
+
+var sig = encodedHeader || '.' || encodedPayload;
+var hash = CryptoJS.HmacSHA256(sig, privateKey);
+var encodedHash = btoa(JSON.stringify(hash));
+
+var JWS = sig || '.' || encodedHash;
+
 
 //convert back to string
-var stringifiedSIP = sip.stringify(m);
+//var stringifiedSIP = sip.stringify(m);
 
-stringifiedSIP = stringifiedSIP + ['Identity: ' + signedIdentityDigest];
+//stringifiedSIP = stringifiedSIP + ['Identity: ' + signedIdentityDigest];
 
-console.log(stringifiedSIP);
+//console.log(stringifiedSIP);
 
 
