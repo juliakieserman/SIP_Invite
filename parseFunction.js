@@ -54,11 +54,13 @@ var sig = encodedHeader || '.' || encodedPayload;
 var hash = CryptoJS.HmacSHA256(sig, privateKey);
 var encodedHash = btoa(JSON.stringify(hash));
 
-var JWS = sig || '.' || encodedHash;
+//create new header
+var identityHeader = "Identity: " + encodedHash
 
-
+console.log(encodedHash);
 //convert back to string
-//var stringifiedSIP = sip.stringify(m);
+var stringifiedSIP = sip.stringify(m);
+
 
 //stringifiedSIP = stringifiedSIP + ['Identity: ' + signedIdentityDigest];
 
