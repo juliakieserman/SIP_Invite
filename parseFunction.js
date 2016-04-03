@@ -57,9 +57,7 @@ var encodedHash = btoa(JSON.stringify(hash));
 //create new header
 var identityHeader = "Identity: " + encodedHash
 
-console.log(encodedHash);
-//convert back to string
-var stringifiedSIP = sip.stringify(m);
+
 
 
 //stringifiedSIP = stringifiedSIP + ['Identity: ' + signedIdentityDigest];
