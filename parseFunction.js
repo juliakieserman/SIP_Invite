@@ -6,12 +6,18 @@ var fs = require('fs');
 var _sip = require('sipcore');
 var btoa = require('btoa');
 
+//Julia's Example:
 var m = sip.parse(['INVITE sip:bob@biloxi.com SIP/2.0', 'Via: SIP/2.0/TLS pc33.atlanta.example.com;branch=z9hG4bKnashds8', 'To: Bob <sip:+12155551213@biloxi.com; user=phone>', 'From: Alice <sip:+12155551212@atlanta.com; user=phone>;tag=1928301774', 'Call-ID: a84b4c76e66710', 'CSeq: 314159 INVITE', 'Max-Fowards: 70', 'Date: Thu, 21 Feb 2002 12:02:03 GMT', 'Contact: <sip:alice@pc33.atlanta.example.com>', 'Content-Type: application/sdp', 'Content-Length: 147', '\r\n'].join('\r\n'));
+
+//Chris's Example:
+//var m = sip.parse(['INVITE sip:test1@siptest.comcast.net SIP/2.0', 'Via: SIP/2.0/UDP 10.36.78.177:60012;branch=z9hG4bK-524287-1---77ba17085d60f141;rport', 'Max-Forwards: 69', 'Contact: <sip:test2@69.241.19.12:50207;rinstance=9da3088f36cc528e>', 'To: <sip:test1@siptest.comcast.net>', 'From: "Test2"<sip:test2@siptest.comcast.net>;tag=614bdb40', 'Call-ID: 79048YzkxNDA5NTI1MzA0OWFjOTFkMmFlODhiNTI2OWQ1ZTI', 'CSeq: 2 INVITE', 'Allow: SUBSCRIBE, NOTIFY, INVITE, ACK, CANCEL, BYE, REFER, INFO, MESSAGE, OPTIONS', 'Content-Type: application/sdp', 'Proxy-Authorization: Digest username="test2",realm="siptest.comcast.net",nonce="56f06a65000000002965efcfd889b6e58f65557ccef41d20",uri="sip:test1@siptest.comcast.net",response="b833d5af7bdcf01d46a293342b34cc1e",algorithm=MD5', 'Supported: replaces', 'User-Agent: X-Lite release 4.9.2 stamp 79048', 'Content-Length: 153', 'v=0', 'o=- 13103070023943130 1 IN IP4 10.36.78.177', 's=X-Lite release 4.9.2 stamp 79048', 'c=IN IP4 10.36.78.177', 't=0 0', 'm=audio 54242 RTP/AVP 0', 'a=sendrecv', '\r\n'].join('\r\n'));
 
 //token header obj
 var header = {"typ":"passport",
                "algo":"RS256", 
                "x5u":"https://cert.example.org/passport.crt"};
+
+console.log(m);
 
 //get date and convert to milliseconds
 var date = Date.parse(m["headers"]["date"]);
@@ -54,8 +60,9 @@ var hash = CryptoJS.HmacSHA256(sig, privateKey);
 var encodedHash = btoa(JSON.stringify(hash));
 
 //create new header
-var identityHeader = "Identity: " + encodedHash
+var identityHeader = "Identity: " + encodedHash 
 
+//STRINGIFY FUNCTION
 //REFERENCED FROM: https://github.com/kirm/sip.js/blob/master/sip.js#L366
 
 function stringifyVersion(v) {
@@ -206,7 +213,6 @@ function stringifyHeaders(m) {
 
   return s;
 }
-
 
 stringifiedSIP = stringifyHeaders(m);
 console.log(stringifiedSIP);
