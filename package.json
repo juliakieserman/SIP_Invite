@@ -1,0 +1,19 @@
+{
+  "name": "stir-implementation",
+  "version": "1.0.0",
+  "description": "STIR authentication and verification",
+  "main": "serverAuth.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Julia Kieserman",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "fs": "0.0.2",
+    "http": "0.0.0",
+    "json-hash": "^1.1.0",
+    "jsrsasign": "^5.0.12"
+  }
+}

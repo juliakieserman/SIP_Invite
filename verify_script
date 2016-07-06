@@ -1,0 +1,15 @@
+curl -i http://localhost:1080/ -d "INVITE sip:test1@siptest.comcast.net SIP/2.0
+Via: SIP/2.0/UDP 10.36.78.177:60012;branch=z9hG4bK-524287-1---77ba17085d60f141;rport
+Max-Forwards: 69
+Contact:  <sip:test2@69.241.19.12:50207;rinstance=9da3088f36cc528e>
+To:  <sip:test1@siptest.comcast.net>
+From: "Test2" <sip:test2@siptest.comcast.net>;tag=614bdb40
+Call-ID: 79048YzkxNDA5NTI1MzA0OWFjOTFkMmFlODhiNTI2OWQ1ZTI
+CSeq: 2 INVITE
+Allow: SUBSCRIBE, NOTIFY, INVITE, ACK, CANCEL, BYE, REFER, INFO, MESSAGE, OPTIONS
+Content-Type: application/sdp
+Proxy-Authorization: Digest username="test2",realm="siptest.comcast.net",nonce="56f06a65000000002965efcfd889b6e58f65557ccef41d20",uri="sip:test1@siptest.comcast.net",response="b833d5af7bdcf01d46a293342b34cc1e",algorithm=MD5
+Supported: replaces
+User-Agent: X-Lite release 4.9.2 stamp 79048
+Content-Length: 153
+Identity: 1baa4e959391979b368827369f6ce5ab1e6823c18998f144d1591f9451a50fb21521ef39ec4a700794e5ad214ebe6c313040eb6f2997b72df41cc0cf56be127f68b667ce0476853d16930a96deaa3f25ec36962e4614a37b9a0d8757c8316e958e1a9192e25058985d0e894439db7e74dd79ca75f92713623452c2ee7d36471d2231e14fceb05414e5ee951bfc43b725f0b6f396d06f31fb08b7c4defaac7ed07e59d97090cc4f2075f1c37bd26f3de679cc57e4be90a104c6b11100bf0f3f954f51b92f009aca8e55202d97c13d9e9181e350b7b14e024b9682f3e419bf6840352c6920116a36a1747bba102a51d77793868a1104935d16a0b1d22b492ca881;info=<https://cert.example.org/passport.crt>;alg=RS256"

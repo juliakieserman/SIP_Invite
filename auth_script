@@ -1,0 +1,15 @@
+curl -i http://localhost:9000/ -d "INVITE sip:test1@siptest.comcast.net SIP/2.0
+Via: SIP/2.0/UDP 10.36.78.177:60012;branch=z9hG4bK-524287-1---77ba17085d60f141;rport
+Max-Forwards: 69
+Contact:  <sip:test2@69.241.19.12:50207;rinstance=9da3088f36cc528e>
+To:  <sip:test1@siptest.comcast.net>
+From: "Test2" <sip:test2@siptest.comcast.net>;tag=614bdb40
+Call-ID: 79048YzkxNDA5NTI1MzA0OWFjOTFkMmFlODhiNTI2OWQ1ZTI
+CSeq: 2 INVITE
+Allow: SUBSCRIBE, NOTIFY, INVITE, ACK, CANCEL, BYE, REFER, INFO, MESSAGE, OPTIONS
+Content-Type: application/sdp
+Proxy-Authorization: Digest username="test2",realm="siptest.comcast.net",nonce="56f06a65000000002965efcfd889b6e58f65557ccef41d20",uri="sip:test1@siptest.comcast.net",response="b833d5af7bdcf01d46a293342b34cc1e",algorithm=MD5
+Supported: replaces
+User-Agent: X-Lite release 4.9.2 stamp 79048
+Content-Length: 153"
+
