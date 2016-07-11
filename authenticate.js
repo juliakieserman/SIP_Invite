@@ -80,7 +80,7 @@ exports.authenticate = function(invite) {
   var hashedHeader = hash.digest(header, 'sha256');
   var hashedClaims = hash.digest(claims, 'sha256');
 
-  var concatednatedHash = hashedHeader || '.' || hashedClaims;
+  var concatednatedHash = hashedHeader + '.' + hashedClaims;
 
   //referenced from: https://github.com/kjur/jsrsasign/wiki/Tutorial-for-Signature-class
   //initialize
